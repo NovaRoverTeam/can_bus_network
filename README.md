@@ -8,6 +8,6 @@ The CanRX node receives all can msgs on the CanRX bus and sorts them by ID. This
 Launch can_nodes.launch to run both the nodes as well as a placeholder publisher publishing onto the motor topics. 
 
 Dependencies:
-    python-can
+    python-can,
     can-utils
 
