@@ -1,0 +1,7 @@
+<launch>
+
+<node pkg="can_bus_network" name="can_node_tx" type="can_node_tx.py"/>
+<node pkg="can_bus_network" name="can_node_rx" type="can_node_rx.py"/>
+<node pkg="can_bus_network" name="motor_talker" type="motor_talker.py"/>
+
+</launch>
