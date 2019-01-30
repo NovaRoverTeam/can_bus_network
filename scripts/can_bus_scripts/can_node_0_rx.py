@@ -12,11 +12,12 @@ bus = can.interface.Bus(can_interface, bustype = 'socketcan_native')
 gps_pub = None
 imu_pub = None
 
-def gps(data):
+def drive(message):
     rospy.loginfo(data.data[0])
     gps_pub.publish(data.data[0])
 
-def imu(data):
+def arm(message):
+    arm_id = message.arbitration_id
     rospy.loginfo(str(data.data[0]))
     imu_pub.publish(data.data[0])
 
@@ -28,8 +29,8 @@ def setup():
    #Set up publisher nodes for all can_bus reports and sensor data
    global gps_pub
    global imu_pub
-   gps_pub = rospy.Publisher('canrx/sensors/gps', String, queue_size=10)
-   imu_pub = rospy.Publisher('canrx/sensors/gps', String, queue_size=10)
+   drive_pub = rospy.Publisher('canrx/motors/drive', String, queue_size=10)
+   arm_pub = rospy.Publisher('canrx/motors/arm', String, queue_size=10)
    print(gps_pub)
    rospy.init_node('can_node_rx', anonymous=True)  #Create the ros node (publishing) 
    rate = rospy.Rate(10) #10Hz

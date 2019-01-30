@@ -4,16 +4,19 @@ find_package(catkin REQUIRED
     roscpp
     std_msgs
     rospy
-    message_generation)
+    message_generation )
 
 #Generate messages
 add_message_files(
   FILES
   #GPS.msg #Contains 3 x,y,z co-ordinates
   #IMU.msg #Containers 3 messages, gyro, accel and positional
-  motor_arm.msg #Contains both the absolute and incremental angular message types
-  motor_drive.msg #The talon SXR messages for RPM and angle\
-  camera_gimbal.msg #Utilising the already Nova made gimbal message on Github
+  cantx/motors_arm.msg #Contains both the absolute and incremental angular message types
+  cantx/motors_drive.msg #The talon SXR messages for RPM and angle\
+  cantx/motors_camera_gimbal.msg #Utilising the already Nova made gimbal message on Github
+  canrx/sensors_gps.msg
+  canrx/sensors_imu.msg
+  canrx/sensors_accelerometer.msg
 )
 
 #Services
